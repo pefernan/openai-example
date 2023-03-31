@@ -1,25 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "@patternfly/react-core/dist/styles/base.css";
+import { Page, PageSection, PageSectionVariants, Text, TextContent } from '@patternfly/react-core';
+import { Header } from './Header/Header';
+import { OpenAiForm } from "./OpenAI/OpenAiForm";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Page 
+    header={<Header/>}
+    additionalGroupedContent={
+      <PageSection variant={PageSectionVariants.light} isWidthLimited>
+        <TextContent>
+          <Text component="h1">OpenAI tests</Text>
+          <Text component="p">Try generating a BPMN process using OpenAI!</Text>
+        </TextContent>
+      </PageSection>
+    }
+    >
+      <PageSection isFilled style={{height: "760px"}}>
+        <OpenAiForm/>
+      </PageSection>
+    </Page>
   );
 }
 
