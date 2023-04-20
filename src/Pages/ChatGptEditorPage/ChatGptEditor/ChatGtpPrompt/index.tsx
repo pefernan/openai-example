@@ -1,0 +1,1 @@
+export { ChatGtpPrompt } from './ChatGtpPrompt';
