@@ -37,7 +37,6 @@ const DEFAULT_CHAT_GPT_SETTINGS: ChatGptSettings = {
   propmtSettings: {
     model: "gpt-3.5-turbo",
     temperature: 0.2,
-    max_tokens: 3000,
   },
 };
 
@@ -87,7 +86,6 @@ const RefChatGpt: React.ForwardRefRenderFunction<ToggleSettingsApi, Props> = (
         const response = await openai.createChatCompletion({
           model: settings.propmtSettings.model ?? "gpt-3.5-turbo",
           temperature: settings.propmtSettings.temperature ?? 0.2,
-          max_tokens: settings.propmtSettings.max_tokens ?? 3000,
           messages: [
             { role: "system", content: CHATGPT_CONTEXT },
             { role: "user", content: prompt },

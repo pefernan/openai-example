@@ -31,7 +31,6 @@ const DEFAULT_CHAT_GPT_SETTINGS: ChatGptSettings = {
   propmtSettings: {
     model: "gpt-3.5-turbo",
     temperature: 0.9,
-    max_tokens: 2048,
   },
 };
 

@@ -5,10 +5,7 @@ import {
   Divider,
   Stack,
   StackItem,
-  Toolbar,
-  ToolbarContent,
-  ToolbarItem,
-  Tooltip,
+  Tooltip
 } from "@patternfly/react-core";
 import { DownloadIcon, RedoIcon, UndoIcon } from "@patternfly/react-icons";
 import { createRef, useCallback, useEffect, useMemo, useState } from "react";

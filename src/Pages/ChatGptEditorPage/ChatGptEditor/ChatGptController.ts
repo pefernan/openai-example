@@ -5,7 +5,6 @@ import {
   ChatGptInteraction,
   ChatGptResponse,
   RESPONSE_TYPE,
-  SuccessfulChatGptResponse,
 } from "../api";
 import { getDiagramXML } from "./xml";
 

@@ -32,7 +32,6 @@ export type ChatGptSettings = {
 export type PromptSettings = {
   model: string;
   temperature: number;
-  max_tokens: number;
 };
 
 export type Props = {
@@ -60,14 +59,12 @@ const RefChatGptSettingsEditor: React.ForwardRefRenderFunction<
   const [editContext, setEditContext] = useState<string>("");
   const [model, setModel] = useState<string>("");
   const [temperature, setTemperature] = useState<number>(0.2);
-  const [max_tokens, setMaxTokens] = useState<number>(3000);
 
   useEffect(() => {
     setSessionContext(settings.sessionContext);
     setEditContext(settings.editContext);
     setModel(settings.propmtSettings.model);
     setTemperature(settings.propmtSettings.temperature);
-    setMaxTokens(settings.propmtSettings.max_tokens);
   }, [models, settings]);
 
   useImperativeHandle(forwardedRef, () => {
@@ -78,7 +75,6 @@ const RefChatGptSettingsEditor: React.ForwardRefRenderFunction<
           editContext,
           propmtSettings: {
             temperature,
-            max_tokens,
             model,
           },
         };
@@ -91,22 +87,6 @@ const RefChatGptSettingsEditor: React.ForwardRefRenderFunction<
     setModelExpanded(false);
   }, []);
 
-  const onChangeMaxTokens = useCallback(
-    (value: number, inputValue?: number) => {
-      if (!inputValue) {
-        setMaxTokens(value);
-      } else {
-        if (inputValue < 0) {
-          inputValue = 0;
-        }
-        if (inputValue > 4096) {
-          inputValue = 4096;
-        }
-        setMaxTokens(inputValue);
-      }
-    },
-    []
-  );
   const onChangeTemp = useCallback((value: number, inputValue?: number) => {
     if (!inputValue) {
       setTemperature(value);
@@ -148,22 +128,6 @@ const RefChatGptSettingsEditor: React.ForwardRefRenderFunction<
                   return <SelectOption value={_model}>{_model}</SelectOption>;
                 })}
               </Select>
-            </FormGroup>
-            <FormGroup label={"Max. Tokens"}>
-              <Slider
-                min={0}
-                max={4096}
-                step={10}
-                hasTooltipOverThumb
-                areCustomStepsContinuous={true}
-                value={max_tokens}
-                onChange={onChangeMaxTokens}
-                isInputVisible
-                inputValue={max_tokens}
-                showBoundaries={false}
-                showTicks={false}
-                isDisabled={true}
-              />
             </FormGroup>
             <FormGroup label={"Temperature"}>
               <Slider
