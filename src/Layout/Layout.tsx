@@ -42,7 +42,7 @@ export const Layout: React.FC<{}> = ({}) => {
   let location = useLocation();
 
   const [apiKey, setApiKey] = useState<string>();
-  const [navOpen, setNavOpen] = useState(true);
+  const [navOpen, setNavOpen] = useState(false);
 
   const onNavToggle = () => {
     setNavOpen(!navOpen);
